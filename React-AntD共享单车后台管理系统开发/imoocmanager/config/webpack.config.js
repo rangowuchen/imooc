@@ -396,6 +396,14 @@ module.exports = function(webpackEnv) {
                       },
                     },
                   ],
+                  // antd按需加载
+                  [
+                    require.resolve('babel-plugin-import'),// 导入 import 插件
+                    {
+                       libraryName: 'antd',   //暴露antd
+                       style: 'css'
+                    }
+                 ]
                 ],
                 // This is a feature of `babel-loader` for webpack (not Babel itself).
                 // It enables caching results in ./node_modules/.cache/babel-loader/
