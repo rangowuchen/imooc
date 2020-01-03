@@ -48,6 +48,10 @@ const cssModuleRegex = /\.module\.css$/;
 const sassRegex = /\.(scss|sass)$/;
 const sassModuleRegex = /\.module\.(scss|sass)$/;
 
+// less新增
+const lessRegex = /\.less$/;
+const lessModuleRegex = /\.module\.less$/;
+
 // This is the production and development configuration.
 // It is focused on developer experience, fast rebuilds, and a minimal bundle.
 module.exports = function(webpackEnv) {
@@ -79,7 +83,9 @@ module.exports = function(webpackEnv) {
   const env = getClientEnvironment(publicUrl);
 
   // common function to get style loaders
-  const getStyleLoaders = (cssOptions, preProcessor) => {
+  // const getStyleLoaders = (cssOptions, preProcessor) => {
+  // less新增
+  const getStyleLoaders = (cssOptions, lessOptions, preProcessor) => {
     const loaders = [
       isEnvDevelopment && require.resolve('style-loader'),
       isEnvProduction && {
@@ -89,6 +95,11 @@ module.exports = function(webpackEnv) {
       {
         loader: require.resolve('css-loader'),
         options: cssOptions,
+      },
+      // less新增
+      {
+        loader:require.resolve('less-loader'),
+        options: lessOptions
       },
       {
         // Options for PostCSS as we reference these options twice
@@ -453,6 +464,30 @@ module.exports = function(webpackEnv) {
                   getLocalIdent: getCSSModuleLocalIdent,
                 },
               }),
+            },
+            // less新增
+            {
+              test: lessRegex,
+              exclude: cssModuleRegex,
+              use: getStyleLoaders(
+                {
+                  importLoaders:1,
+                  sourceMap:isEnvProduction?shouldUseSourceMap:isEnvDevelopment
+                },
+                'less-loader'
+              )
+            },
+            {
+              test: lessModuleRegex,
+              use:getStyleLoaders(
+                {
+                  importLoaders:1,
+                  sourceMap:isEnvProduction?shouldUseSourceMap:isEnvDevelopment,
+                  module:true,
+                  getLocalIdent:getCSSModuleLocalIdent
+                },
+                'less-loader'
+              )
             },
             // Opt-in support for SASS (using .scss or .sass extensions).
             // By default we support SASS Modules with the

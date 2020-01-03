@@ -2,13 +2,13 @@
  * @Author: wuchen
  * @Date: 2020-01-02 16:14:00
  * @LastEditors  : wuchen
- * @LastEditTime : 2020-01-03 16:06:40
+ * @LastEditTime : 2020-01-03 17:35:34
  * @Description: 
  * @Email: rangowu@163.com
  */
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './index.less';
 import Life from './pages/demo/Life';
 import * as serviceWorker from './serviceWorker';
 
