@@ -2,7 +2,7 @@
  * @Author: wuchen
  * @Date: 2020-01-08 19:31:25
  * @LastEditors  : wuchen
- * @LastEditTime : 2020-01-09 19:33:26
+ * @LastEditTime : 2020-01-09 19:59:42
  * @Description: 
  * @Email: rangowu@163.com
  */
@@ -35,7 +35,7 @@ export default class NavLeft extends React.Component {
     }
     render() {
         return (
-            <div>
+            <div style={{background:'red'}}>
                 <div className="logo">
                     <img src="/assets/logo-ant.svg" alt="" />
                     <h1>Imooc MS</h1>
