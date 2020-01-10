@@ -2,7 +2,7 @@
  * @Author: wuchen
  * @Date: 2020-01-08 19:31:25
  * @LastEditors  : wuchen
- * @LastEditTime : 2020-01-09 19:59:42
+ * @LastEditTime : 2020-01-10 10:49:11
  * @Description: 
  * @Email: rangowu@163.com
  */
@@ -30,7 +30,7 @@ export default class NavLeft extends React.Component {
                     </SubMenu>
                 )
             }
-            return <Menu.Item title={item.title} key={item.key} />
+            return <Menu.Item title={item.title} key={item.key}>{item.title}</Menu.Item>
         })
     }
     render() {
