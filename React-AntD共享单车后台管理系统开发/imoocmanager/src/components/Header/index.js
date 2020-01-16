@@ -2,7 +2,7 @@
  * @Author: wuchen
  * @Date: 2020-01-08 19:31:25
  * @LastEditors  : wuchen
- * @LastEditTime : 2020-01-10 14:38:19
+ * @LastEditTime : 2020-01-13 11:25:00
  * @Description: 
  * @Email: rangowu@163.com
  */
@@ -28,7 +28,7 @@ export default class Header extends React.Component{
                 <Row className="header-top">
                     <Col span={24}>
                         <span>欢迎,{this.state.userName}</span>
-                        <a href="#">退出</a>
+                        <a href="https://xxx.com">退出</a>
                     </Col>
                 </Row>
                 <Row className="breadcrumb">
