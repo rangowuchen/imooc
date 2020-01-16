@@ -2,7 +2,7 @@
  * @Author: wuchen
  * @Date: 2020-01-08 19:29:41
  * @LastEditors  : wuchen
- * @LastEditTime : 2020-01-09 20:05:33
+ * @LastEditTime : 2020-01-16 11:25:32
  * @Description: 
  * @Email: rangowu@163.com
  */
@@ -12,6 +12,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import NavLeft from './components/NavLeft';
 import './style/common.less';
+import Home from './pages/home';
 export default class Admin extends React.Component{
 
     render() {
@@ -23,9 +24,9 @@ export default class Admin extends React.Component{
                 <Col span={20} className="main">
                     <Header>header</Header>
                     <Row className="content">
-                        content
+                        <Home />
                     </Row>
-                    <Footer>footer</Footer>
+                    <Footer></Footer>
                 </Col>
             </Row>
         );
