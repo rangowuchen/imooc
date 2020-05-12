@@ -2,7 +2,7 @@
  * @Author: wuchen
  * @Date: 2019-12-12 15:16:45
  * @LastEditors: wuchen
- * @LastEditTime: 2019-12-13 15:11:16
+ * @LastEditTime: 2020-05-12 15:05:00
  * @Description: 
  * @Email: rangowu@163.com
  */
@@ -33,28 +33,59 @@ class TodoList extends Component {
 
 
 
+  // 新增
   handleBtnClick() {
-    this.setState({
-      // 包含之前list的数据,同时添加...
-      list: [...this.state.list, this.state.inputValue],
+    // 旧写法
+    // this.setState({
+    //   // es6展开运算符,例this.state.list = [1,2,3]=>...this.state.list=>1,2,3
+    //   // 包含之前list的数据,同时添加...
+    //   list: [...this.state.list, this.state.inputValue],
+    //   inputValue: ''
+    // })
+    // 新写法-prevState修改数据之前的数据,等价于this.state
+    this.setState((prevState) => ({
+      // list: [...this.state.list, this.state.inputValue],
+      list: [...prevState.list, prevState.inputValue],
       inputValue: ''
-    })
+    }))
   }
   handleInputChange(e) {
     console.log(e.target.value);
-    this.setState({
-      inputValue: e.target.value
-    })
+    // 旧写法
+    // this.setState({
+    //   inputValue: e.target.value
+    // })
+    // 新写法(未简化)
+    // this.setState(() => {
+    //   return {
+    //     inputValue:e.target.value
+    //   }
+    // })
+    // 新写法(简化es6 return简写)
+    const value = e.target.value;//不能直接写,否则会报错
+    this.setState(() => ({
+      inputValue: value
+    }))
   }
   // 父组件通过属性的形式向子组件传递参数
   // 子组件通过props接收父组件传递过来的参数
 
+  // 删除
   handleDelete(index) {
+    // 先拷贝后改变的原因:immutable
+    // state 不允许我们做任何的改变,所以this.state.list.splice(index,1)是错误的
+    
+    // 拷贝
     const list = [...this.state.list];
     list.splice(index, 1);
-    this.setState({
+    //旧写法-改变数据
+    // this.setState({
+    //   list: list
+    // })
+    // 新写法
+    this.setState(() => ({
       list: list
-    })
+    }))
   }
 
   getTodoLists() {
@@ -68,7 +99,6 @@ class TodoList extends Component {
            index={index}
           />
         )
-        // return <li key={index} onClick={this.handleItemClick.bind(this, index)}>{item}</li>
       })
     )
   }
@@ -79,14 +109,20 @@ class TodoList extends Component {
       //可替换成 <React.Fragment></React.Fragment>
       <Fragment>
         <div>
-          <input value={this.state.inputValue} onChange={this.handleInputChange}/>
+          {/* label中的for属性不能直接写成for,react会读取成for循环.所以用htmlFor */}
+          {/* <label for="inputArea">请输入内容</label> */}
+          <label htmlFor="inputArea">请输入内容</label>
+          <input 
+            id="inputArea" 
+            className="input" 
+            value={this.state.inputValue} 
+            onChange={this.handleInputChange}
+          />
           {/* bind使得this的指向相同 */}
           <button style={{background:'red', color:'#fff'}} className='rea-btn' onClick={this.handleBtnClick}>add</button>
         </div>
         <ul>
-          {
-            this.getTodoLists()
-          }
+          { this.getTodoLists() }
         </ul>
       </Fragment>
     );

@@ -1,3 +1,6 @@
+.input{
+    border: 1px solid red;
+}
 .red-btn{
     background: red;
     color: #fff;

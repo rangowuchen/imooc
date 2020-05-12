@@ -2,7 +2,7 @@
  * @Author: wuchen
  * @Date: 2019-12-13 11:44:09
  * @LastEditors: wuchen
- * @LastEditTime: 2019-12-13 15:11:58
+ * @LastEditTime: 2020-04-28 19:43:56
  * @Description: 
  * @Email: rangowu@163.com
  */
@@ -26,6 +26,8 @@ class TodoItem extends Component {
         return (
             // <div onClick={this.handleDelete}>{this.props.content}</div>
             <div onClick={this.handleDelete}>{content}</div>
+            // 可以输入html标签并编译
+            // <div onClick={this.handleDelete} dangerouslySetInnerHTML={{__html:content}}></div>
         )
     }
 }
