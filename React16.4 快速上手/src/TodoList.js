@@ -2,12 +2,13 @@
  * @Author: wuchen
  * @Date: 2019-12-12 15:16:45
  * @LastEditors: wuchen
- * @LastEditTime: 2020-05-12 15:05:00
+ * @LastEditTime: 2020-05-19 15:13:36
  * @Description: 
  * @Email: rangowu@163.com
  */
 import React, { Component, Fragment } from 'react';
 import TodoItem from './TodoItem';
+import Test from './Test';
 
 // 定义一个React组件
 // 一个类继承Component
@@ -15,6 +16,7 @@ class TodoList extends Component {
 
   constructor(props) {
     super(props);
+    // 当组件的state或者props发生改变的时候,render函数就会重新执行
     this.state = {
       list: [
         'learn react',
@@ -124,6 +126,7 @@ class TodoList extends Component {
         <ul>
           { this.getTodoLists() }
         </ul>
+        <Test content={this.state.inputValue}/>
       </Fragment>
     );
   }
