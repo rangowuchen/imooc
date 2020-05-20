@@ -2,7 +2,7 @@
  * @Author: wuchen
  * @Date: 2019-12-12 15:16:45
  * @LastEditors: wuchen
- * @LastEditTime: 2020-05-19 15:13:36
+ * @LastEditTime: 2020-05-20 16:16:16
  * @Description: 
  * @Email: rangowu@163.com
  */
@@ -49,7 +49,12 @@ class TodoList extends Component {
       // list: [...this.state.list, this.state.inputValue],
       list: [...prevState.list, prevState.inputValue],
       inputValue: ''
-    }))
+    }),() => {
+      // setState 异步函数执行完成后才执行的函数
+      console.log(this.ul.querySelectorAll('div').length)
+    })
+    // 不能在此处打印,setState是异步函数,不会立即执行
+    // console.log(this.ul.querySelectorAll('div').length)
   }
   handleInputChange(e) {
     console.log(e.target.value);
@@ -64,7 +69,8 @@ class TodoList extends Component {
     //   }
     // })
     // 新写法(简化es6 return简写)
-    const value = e.target.value;//不能直接写,否则会报错
+    // const value = e.target.value;//不能直接写,否则会报错,可写成下面形式,ref获取的值
+    const value = this.input.value
     this.setState(() => ({
       inputValue: value
     }))
@@ -119,11 +125,12 @@ class TodoList extends Component {
             className="input" 
             value={this.state.inputValue} 
             onChange={this.handleInputChange}
+            ref={ (input) => {this.input = input}}
           />
           {/* bind使得this的指向相同 */}
           <button style={{background:'red', color:'#fff'}} className='rea-btn' onClick={this.handleBtnClick}>add</button>
         </div>
-        <ul>
+        <ul ref={(ul) => {this.ul = ul}}>
           { this.getTodoLists() }
         </ul>
         <Test content={this.state.inputValue}/>

@@ -2,7 +2,7 @@
  * @Author: wuchen
  * @Date: 2019-12-13 11:44:09
  * @LastEditors: wuchen
- * @LastEditTime: 2020-05-20 15:30:43
+ * @LastEditTime: 2020-05-20 15:55:38
  * @Description: 
  * prop-types:传值的字段类型
  * defaultProps:默认值(若父组件没有给子组件传值,可在子组件写个默认值,防止报错)
@@ -40,10 +40,10 @@ class TodoItem extends Component {
 
 // 限制要求父组件给子组件传值的类型
 TodoItem.propTypes = {
-    content: PropTypes.string,//字符串,若是函数则为PropTypes.func
+    // content: PropTypes.string,//字符串,若是函数则为PropTypes.func
     test: PropTypes.string.isRequired,//此字段必须从父组件传值,且为必传,若父组件未传,可定义个默认值
-    // 若可以是好几种类型,可用arrayOf
-    // content: PropTypes.arrayOf(PropTypes.number, PropTypes.string)
+    // 若可以是好几种类型,可用oneOfType
+    content: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
 }
 
 // 定义默认值
