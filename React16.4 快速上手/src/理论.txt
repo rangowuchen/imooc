@@ -2,7 +2,7 @@
  * @Author: wuchen
  * @Date: 2020-05-19 16:49:03
  * @LastEditors: wuchen
- * @LastEditTime: 2020-05-20 15:52:35
+ * @LastEditTime: 2020-05-21 18:40:28
  * @Description: 
  * @Email: rangowu@163.com
  */ 
@@ -30,7 +30,7 @@
 性能的提升并不明显
 
 
-虚拟DOM:
+一.虚拟DOM:
 1.state 数据
 2.JSX 模板
 3.数据+模板 结合,生成虚拟DOM(虚拟DOM就是一个js对象,用它来描述真实的DOM) (损耗了性能)
@@ -49,3 +49,15 @@ Diff:difference
 优点:
 1. 性能提升了
 2.它使得跨端应用得以实现.React Native
+
+二.生命周期
+生命周期函数指在某一个时刻组件会自动调用执行的函数
+1) componentWillMount:在组件即将被挂载到页面的时候自动执行
+2) componentDidMount:组件被挂载到页面之后,自动被执行
+3) shouldComponentUpdate:组件在被更新之前,它会自动被执行(需要返回个Boolean值,可翻译为:是要更新数据吗)
+4) componentWillUpdate:组件被更新之前,他会自动执行,但是在shouldComponentUpdate之后执行
+若shouldComponentUpdate返回为true它才执行,若为false这个函数不会被执行
+5) componentDidUpdate:组件更新完成之后,它会被执行
+6) componentWillReceiveProps: 当一个组件从父组件接收参数,若这个组件第一次存在于父组件中,不会执行,
+若这个组件已经存在父组件中,才会执行
+7) componentWillUnmount: 这个组件即将被从这个页面中剔除的时候,会被执行

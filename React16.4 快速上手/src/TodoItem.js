@@ -2,7 +2,7 @@
  * @Author: wuchen
  * @Date: 2019-12-13 11:44:09
  * @LastEditors: wuchen
- * @LastEditTime: 2020-05-20 15:55:38
+ * @LastEditTime: 2020-05-21 18:44:07
  * @Description: 
  * prop-types:传值的字段类型
  * defaultProps:默认值(若父组件没有给子组件传值,可在子组件写个默认值,防止报错)
@@ -24,6 +24,7 @@ class TodoItem extends Component {
     }
 
     render() {
+        console.log('child render')
         // es6解构赋值
         const { content, test } = this.props;//es6
         // jsx -> createElement -> 虚拟DOM(js对象) -> 真实的DOM
@@ -35,6 +36,18 @@ class TodoItem extends Component {
             // 可以输入html标签并编译
             // <div onClick={this.handleDelete} dangerouslySetInnerHTML={{__html:content}}></div>
         )
+    }
+
+    // 当一个组件从父组件接收参数
+    //  如果这个组件第一次存在于父组件中,不会执行
+    // 如果这个组件之前已经存在于父组件中,才会执行
+    componentWillReceiveProps(){
+        console.log('child componentWillReceiveProps')
+    }
+
+    // 这个组件即将被从页面中剔除的时候,会被执行
+    componentWillUnmount(){
+        console.log('child componentWillUnmount')
     }
 }
 
