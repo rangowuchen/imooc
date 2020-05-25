@@ -2,12 +2,13 @@
  * @Author: wuchen
  * @Date: 2019-12-12 15:16:45
  * @LastEditors: wuchen
- * @LastEditTime: 2020-05-21 18:24:30
+ * @LastEditTime: 2020-05-25 19:49:16
  * @Description: 
  * @Email: rangowu@163.com
  */
 import React, { Component, Fragment } from 'react';
 import TodoItem from './TodoItem';
+import axios from 'axios';
 import Test from './Test';
 
 // 定义一个React组件
@@ -67,6 +68,12 @@ class TodoList extends Component {
   // 组件被挂载到页面之后,自动被执行
   componentDidMount(){
     console.log('componentDidMount');
+    axios.get('/api/xxx')
+    .then(() => {
+      alert('success')})
+    .catch(() => {
+      alert('fail')
+    })
   }
 
   // 组件被更新之前,它会自动被执行

@@ -2,7 +2,7 @@
  * @Author: wuchen
  * @Date: 2019-12-13 11:44:09
  * @LastEditors: wuchen
- * @LastEditTime: 2020-05-21 18:44:07
+ * @LastEditTime: 2020-05-25 19:37:29
  * @Description: 
  * prop-types:传值的字段类型
  * defaultProps:默认值(若父组件没有给子组件传值,可在子组件写个默认值,防止报错)
@@ -21,6 +21,14 @@ class TodoItem extends Component {
     }
     handleDelete() {
         this.props.delete(this.props.index)
+    }
+    // nextProps,nextState即将改变的内容与原来的值做对比,若不相同,则更新render,可提升子组件的性能
+    shouldComponentUpdate(nextProps,nextState){
+        if(nextProps.content !== this.props.content){
+            return true;
+        }else {
+            return false
+        }
     }
 
     render() {
