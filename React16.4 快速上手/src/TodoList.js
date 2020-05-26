@@ -2,7 +2,7 @@
  * @Author: wuchen
  * @Date: 2019-12-12 15:16:45
  * @LastEditors: wuchen
- * @LastEditTime: 2020-05-25 19:49:16
+ * @LastEditTime: 2020-05-26 13:02:32
  * @Description: 
  * @Email: rangowu@163.com
  */
@@ -68,10 +68,20 @@ class TodoList extends Component {
   // 组件被挂载到页面之后,自动被执行
   componentDidMount(){
     console.log('componentDidMount');
-    axios.get('/api/xxx')
-    .then(() => {
-      alert('success')})
-    .catch(() => {
+    // 使用charles模拟数据请求
+    //https://www.jianshu.com/p/7c64d72f39f6
+    axios.get('http://localhost.charlesproxy.com:3000/api/todolist')
+    .then((res) => {
+      console.log(res.data);
+      // this.setState(() => {
+      //   return {
+      //     list: res.data
+      //   }
+      // })
+      this.setState(() => ({
+        list: [...res.data]
+      }))
+    }).catch(() => {
       alert('fail')
     })
   }
