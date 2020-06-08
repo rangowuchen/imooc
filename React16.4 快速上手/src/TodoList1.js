@@ -2,7 +2,7 @@
  * @Author: wuchen
  * @Date: 2019-12-12 15:16:45
  * @LastEditors: wuchen
- * @LastEditTime: 2020-05-26 13:02:32
+ * @LastEditTime: 2020-06-03 11:39:07
  * @Description: 
  * @Email: rangowu@163.com
  */
@@ -13,7 +13,7 @@ import Test from './Test';
 
 // 定义一个React组件
 // 一个类继承Component
-class TodoList extends Component {
+class TodoList1 extends Component {
 
   constructor(props) {
     super(props);
@@ -182,4 +182,4 @@ class TodoList extends Component {
   }
 }
 
-export default TodoList;
+export default TodoList1;
