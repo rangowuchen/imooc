@@ -2,7 +2,7 @@
  * @Author: wuchen
  * @Date: 2020-06-01 17:44:14
  * @LastEditors: wuchen
- * @LastEditTime: 2020-06-09 12:59:54
+ * @LastEditTime: 2020-06-09 13:48:49
  * @Description: 
  * @Email: rangowu@163.com
  */ 
@@ -10,7 +10,7 @@ import React,{Component} from 'react';
 import 'antd/dist/antd.css';
 import { Input, Button, List } from 'antd';
 import store from './store';
-import {CHANGE_INPUT_VALUE,ADD_TODO_ITEM,DELETE_TODO_ITEM} from './store/actionType'
+import {getInputChangeAction,getAddItemAction,getDeleteItemAction} from './store/actionCreators';
 
 class TodoList extends Component {
     constructor(props) {
@@ -47,10 +47,11 @@ class TodoList extends Component {
 
     handleInputChange(e){
         // 创建action
-        const action = {
-            type: CHANGE_INPUT_VALUE,
-            value: e.target.value
-        }
+        // const action = {
+        //     type: CHANGE_INPUT_VALUE,
+        //     value: e.target.value
+        // }
+        const action = getInputChangeAction(e.target.value)
         // 传递action
         store.dispatch(action)
         // console.log(e.target.value)
@@ -58,9 +59,10 @@ class TodoList extends Component {
 
     handleBtnClick() {
         // 第一步 创建action
-        const action = {
-            type: ADD_TODO_ITEM,
-        }
+        // const action = {
+        //     type: ADD_TODO_ITEM,
+        // }
+        const action = getAddItemAction();
         // 第二步 将action发给store
         store.dispatch(action)
 
@@ -72,10 +74,11 @@ class TodoList extends Component {
         console.log('store change')
     }
     handleItemDelete(index){
-        const action = {
-            type: DELETE_TODO_ITEM,
-            index
-        }
+        // const action = {
+        //     type: DELETE_TODO_ITEM,
+        //     index
+        // }
+        const action = getDeleteItemAction(index)
         store.dispatch(action);
     }
     
