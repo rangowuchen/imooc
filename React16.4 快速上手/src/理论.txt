@@ -2,7 +2,7 @@
  * @Author: wuchen
  * @Date: 2020-05-19 16:49:03
  * @LastEditors: wuchen
- * @LastEditTime: 2020-06-09 14:26:27
+ * @LastEditTime: 2020-06-09 15:26:44
  * @Description: 
  * @Email: rangowu@163.com
  */ 
@@ -75,3 +75,8 @@ createStore      (创建store)
 store.dispatch   (派发action,传递给store)
 store.getState   (获取store所有数据内容)
 store.subscribe  (只要store发生改变,这个的回调函数就会被执行)
+
+3) UI组件负责页面的渲染,容器组件负责业务逻辑
+
+4) 无状态组件:组件中只有一个render函数,可用无状态组件替换这个普通的组件
+优点:性能比较高,只是一个函数,而这个普通组件是一个类,里面也有相应的生命周期等,执行的东西远比无状态组件多
