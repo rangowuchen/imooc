@@ -2,11 +2,12 @@
  * @Author: wuchen
  * @Date: 2020-06-09 14:48:45
  * @LastEditors: wuchen
- * @LastEditTime: 2020-06-09 15:23:14
+ * @LastEditTime: 2020-06-09 19:12:05
  * @Description: UI组件负责页面的渲染,容器组件负责业务逻辑
  * @Email: rangowu@163.com
  */ 
-import React, {Component} from 'react';
+// import React, {Component} from 'react';
+import React from 'react';
 import 'antd/dist/antd.css';
 import { Input, Button, List } from 'antd';
 const TodoListUI = (props) => {

@@ -2,11 +2,11 @@
  * @Author: wuchen
  * @Date: 2020-06-02 18:34:47
  * @LastEditors: wuchen
- * @LastEditTime: 2020-06-09 13:01:58
+ * @LastEditTime: 2020-06-09 19:14:57
  * @Description: 
  * @Email: rangowu@163.com
  */ 
-import {CHANGE_INPUT_VALUE,ADD_TODO_ITEM,DELETE_TODO_ITEM} from './actionType'
+import {CHANGE_INPUT_VALUE,ADD_TODO_ITEM,DELETE_TODO_ITEM,INIT_LIST_ACTION} from './actionType'
 // 仓库中有两个数据
 const defaultState = {
     inputValue: '',
@@ -30,6 +30,11 @@ export default (state = defaultState, action) => {
     if(action.type === DELETE_TODO_ITEM){
         const newState = JSON.parse(JSON.stringify(state));
         newState.list.splice(action.index,1);
+        return newState;
+    }
+    if(action.type === INIT_LIST_ACTION){
+        const newState = JSON.parse(JSON.stringify(state));
+        newState.list = action.data;
         return newState;
     }
     console.log(state, action)

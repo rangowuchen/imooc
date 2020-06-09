@@ -2,14 +2,15 @@
  * @Author: wuchen
  * @Date: 2020-06-01 17:44:14
  * @LastEditors: wuchen
- * @LastEditTime: 2020-06-09 15:04:03
+ * @LastEditTime: 2020-06-09 19:12:43
  * @Description: 
  * @Email: rangowu@163.com
  */ 
 import React,{Component} from 'react';
 import store from './store';
-import {getInputChangeAction,getAddItemAction,getDeleteItemAction} from './store/actionCreators';
+import {getInputChangeAction,getAddItemAction,getDeleteItemAction,initListAction} from './store/actionCreators';
 import TodoListUI from './TodoListUI';
+import axios from 'axios';
 
 class TodoList extends Component {
     constructor(props) {
@@ -33,6 +34,16 @@ class TodoList extends Component {
             handleItemDelete={this.handleItemDelete}
             ></TodoListUI>
         )
+    }
+
+    componentDidMount(){
+        axios.get('/list/json').then(() => {
+            
+        })
+        const data = [1,2]
+        const action = initListAction(data);
+        console.log(action)
+        store.dispatch(action);
     }
 
     handleInputChange(e){
