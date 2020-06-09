@@ -2,7 +2,7 @@
  * @Author: wuchen
  * @Date: 2020-06-01 17:44:14
  * @LastEditors: wuchen
- * @LastEditTime: 2020-06-08 20:12:08
+ * @LastEditTime: 2020-06-09 12:46:53
  * @Description: 
  * @Email: rangowu@163.com
  */ 
@@ -38,7 +38,7 @@ class TodoList extends Component {
                     style={{marginTop:'10px',width:'300px'}}
                     bordered
                     dataSource={this.state.list}
-                    renderItem={item => (<List.Item>{item}</List.Item>)}
+                    renderItem={(item,index) => (<List.Item onClick={this.handleItemDelete.bind(this,index)}>{item}</List.Item>)}
                 />
             </div>
         )
@@ -69,6 +69,13 @@ class TodoList extends Component {
         // 重新从store中取数据，更新到state
         this.setState(store.getState())
         console.log('store change')
+    }
+    handleItemDelete(index){
+        const action = {
+            type: 'delete_todo_item',
+            index
+        }
+        store.dispatch(action);
     }
     
 }
